@@ -9,13 +9,9 @@ import PackageDescription
 // which exist only for the host's platform family.
 // BEGIN BINARY TARGETS
 let binaryTargets: [Target] = [
-    ("CWendyCoreApple", "CWendyCore.xcframework"),
-    ("CWendyCoreLinux", "CWendyCore.artifactbundle"),
-].compactMap { name, file in
-    let path = "distributions/swift/artifacts/" + file
-    let exists = FileManager.default.fileExists(atPath: Context.packageDirectory + "/" + path)
-    return exists ? .binaryTarget(name: name, path: path) : nil
-}
+    .binaryTarget(name: "CWendyCoreApple", url: "https://github.com/wendylabsinc/wendy-core/releases/download/v0.0.1/CWendyCore-0.0.1.xcframework.zip", checksum: "8e51eeaca7e1d938d705853060199297b3df09537b21c3ade373f8357c3e109e"),
+    .binaryTarget(name: "CWendyCoreLinux", url: "https://github.com/wendylabsinc/wendy-core/releases/download/v0.0.1/CWendyCore-0.0.1.artifactbundle.zip", checksum: "b79de67afaa06c1e10ddd8c7ec52d0f01f3cc49afcbf9c27e31be3ffc58355c0"),
+]
 // END BINARY TARGETS
 
 let binaryPlatforms: [String: [Platform]] = [
